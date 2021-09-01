@@ -2,7 +2,7 @@ import React from "react";
 import ProductListItem from "../ProductListItem";
 import ProductDetails from "../ProductDetails";
 import './ProductView.css'
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 
 
@@ -10,6 +10,14 @@ function ProductView({ products }) {
     // TODO: Replace with state variable
     const [sideOpen, setSideOpen] = useState(true);
     const [selectedProduct, setSelectedProduct] = useState('');
+
+    useEffect(() => {
+        if(selectedProduct)setSideOpen(true)
+    }, [selectedProduct])
+
+    useEffect(() => {
+        if(!sideOpen)setSelectedProduct("")
+    }, [sideOpen])
 
 
     return (
